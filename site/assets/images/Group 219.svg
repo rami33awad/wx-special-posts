@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="92" height="58.529" viewBox="0 0 92 58.529">
+  <g id="Group_219" data-name="Group 219" transform="translate(-948 -107.212)">
+    <text id="Help" transform="translate(1011 144.476)" fill="#272d3b" font-size="13" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">Help</tspan></text>
+    <g id="cancel" transform="translate(977.264 107.212) rotate(45)">
+      <g id="Group_16" data-name="Group 16" transform="translate(0 0)">
+        <path id="Path_8" data-name="Path 8" d="M35.324,6.062A20.692,20.692,0,1,0,6.062,35.324,20.692,20.692,0,1,0,35.324,6.062Zm-1.663,27.6A18.339,18.339,0,0,1,7.725,7.725,18.339,18.339,0,0,1,33.661,33.661Z" transform="translate(0 0)" fill="#4c8ce6"/>
+      </g>
+    </g>
+  </g>
+</svg>
