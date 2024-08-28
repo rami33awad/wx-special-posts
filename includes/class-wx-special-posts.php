@@ -141,6 +141,9 @@ class Class_Wx_Special_Posts {
 
 		$plugin_public = new Wx_Special_Posts_Public( $this->get_plugin_name(), $this->get_version() );
 
+		//*Hook Into Other Plugins Assets Enqueue
+		$this->loader->add_action( 'wp', $plugin_public, 'wx_hook_into_other_plugins_assests' );
+
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 

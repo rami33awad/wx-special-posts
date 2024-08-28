@@ -53,6 +53,14 @@ class Class_Wx_Special_Posts_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+
+		$sp_enqueue_css = true;
+		$sp_enqueue_css = apply_filters('wx_sp_enqueue_css',$sp_enqueue_css);
+
+		if( !$sp_enqueue_css ){
+			return;
+		}
+
 		wp_enqueue_style( 'bootstrap-5-css', Wx_SPECIAL_POSTS_ASSETS_DIR_URL . 'css/bootstrap.min.css', array(), $this->version, 'all' );
 		wp_enqueue_style( '-fa6-css', Wx_SPECIAL_POSTS_ASSETS_DIR_URL . 'css/fa-6/css/all.min.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'google-fonts-Montserrat','https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap', array(), $this->version, 'all' );
@@ -83,6 +91,14 @@ class Class_Wx_Special_Posts_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+
+		$sp_enqueue_js = true;
+		$sp_enqueue_js = apply_filters('wx_sp_enqueue_js',$sp_enqueue_js);
+		
+		if( !$sp_enqueue_js ){
+			return;
+		}
+
 		wp_enqueue_script( 'jquery' );
 
 		wp_enqueue_script( 'bootstrap-5', Wx_SPECIAL_POSTS_ASSETS_DIR_URL . 'js/bootstrap.bundle.min.js', array( 'jquery' ), $this->version, true );
@@ -124,6 +140,33 @@ class Class_Wx_Special_Posts_Public {
 				'Wx_SPECIAL_POSTS_TAXONOMY_SLUG'	=>	Wx_SPECIAL_POSTS_TAXONOMY_SLUG,
 	        )
 	    );
+	}
+
+
+	/**
+	 * Hook Into Other Plugin's Assets
+	 * @since    1.0.0
+	 */
+	public function wx_hook_into_other_plugins_assests(){
+		global $post;
+		$post_content = $post->post_content ?? '';
+
+		$my_plugin_shortcodes = array(
+			'wx-sp-flexible-content',
+			'wx-sp-flexible-content-output',
+			'wx-special-posts-dashboard',
+			'wx-add-special-post',
+			'wx-group-special-posts',
+		);
+		
+
+		foreach( $my_plugin_shortcodes as $shortcode){
+			if (has_shortcode($post_content, $shortcode)) {
+				wx_disallow_ai_assets();
+				break;
+			}
+		}
+		
 	}
 
 }

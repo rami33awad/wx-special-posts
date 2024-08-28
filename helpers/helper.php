@@ -105,3 +105,18 @@ if (!function_exists('wx_check_user_roles_perms')) {
         return false;
     }
 }
+
+/**
+ * Wx Prevent AI Plugin From Equeue CSS & Js
+ * @since    1.0.0
+ */
+if (!function_exists('wx_disallow_ai_assets')) {
+    function wx_disallow_ai_assets() {
+        add_filter('wx_ai_enqueue_css', function($wx_ai_enqueue_css) {
+            return false;
+        });
+        add_filter('wx_ai_enqueue_js', function($ai_enqueue_js) {
+            return false;
+        });
+    }
+}
