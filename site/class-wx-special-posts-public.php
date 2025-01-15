@@ -163,6 +163,7 @@ class Class_Wx_Special_Posts_Public {
 		foreach( $my_plugin_shortcodes as $shortcode){
 			if (has_shortcode($post_content, $shortcode)) {
 				wx_disallow_ai_assets();
+				wx_disallow_emails_assets();
 				break;
 			}
 		}

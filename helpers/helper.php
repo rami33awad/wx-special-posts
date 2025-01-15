@@ -107,7 +107,7 @@ if (!function_exists('wx_check_user_roles_perms')) {
 }
 
 /**
- * Wx Prevent AI Plugin From Equeue CSS & Js
+ * Wx Prevent AI Plugin From Equeue CSS & Js [wiliex-ai]
  * @since    1.0.0
  */
 if (!function_exists('wx_disallow_ai_assets')) {
@@ -115,7 +115,22 @@ if (!function_exists('wx_disallow_ai_assets')) {
         add_filter('wx_ai_enqueue_css', function($wx_ai_enqueue_css) {
             return false;
         });
-        add_filter('wx_ai_enqueue_js', function($ai_enqueue_js) {
+        add_filter('wx_ai_enqueue_js', function($wx_ai_enqueue_js) {
+            return false;
+        });
+    }
+}
+
+/**
+ * Wx Prevent Emails Plugin From Equeue CSS & Js [wiliex-emails]
+ * @since    1.0.0
+ */
+if (!function_exists('wx_disallow_emails_assets')) {
+    function wx_disallow_emails_assets() {
+        add_filter('wx_emails_enqueue_css', function($wx_emails_enqueue_css) {
+            return false;
+        });
+        add_filter('wx_emails_enqueue_js', function($wx_emails_enqueue_js) {
             return false;
         });
     }
